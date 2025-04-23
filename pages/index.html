@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=0.2">
+  <meta charset="utf-8">
+  <meta name="description"
+        content=" Re3Sim">
+  <meta name="keywords" content="Real2sim2real Pipeline for Robotic Manipulation">
+  <title> Re3Sim</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <!-- 新 Bootstrap5 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+ 
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <!-- 在head标签中添加新的Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/Logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/script.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+</nav> -->
+
+
+<section class="hero">
+  <div class="section-with-bg">
+  <div class="hero-body">
+    <div class="while-text-background">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"  style="font-size:2.3rem; line-height:2;">RE<sup>3</sup>SIM: Generating High-Fidelity Simulation Data via <br> 3D-Photorealistic Real-to-Sim for Robotic Manipulation</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container is-max-desktop" style="z-index: 2">
+      <div class="columns is-left">
+        <div class="column is-full-width">
+          <div class="subtitle has-text-centered">
+            <br>
+            <div style="text-align: left">We introduced <b>RE<sup>3</sup>SIM</b>, a novel Real-to-Sim-to-Real pipeline that integrates Gaussian splatting with NVIDIA Isaac Sim's PhysX engine, improving scene reconstruction and sim-to-real transfer for robotic manipulation tasks.</div>
+            <div style="text-align: left">
+                <br>
+                <h2  class="title is-5">Highlights: </h2>
+                <ul class="left-bullet">
+                  <li><a href="#visual-comparison">High-fidelity geometry and vision</a>: small sim-to-real gaps in both geometry and visual aspects.</li>
+                  <li><a href="#real-to-sim-to-real-efficiency">Highly efficient data collection</a>: scene reconstruction in ~2.5 minutes and simulation data at 100 episodes per 10 minutes.</li>
+                  <li><a href="#zero-shot-sim-to-real">Zero-shot sim-to-real transfer:</a> limited simulation data brings high success rates.</li>
+                </ul><br>
+              
+                <h2  class="title is-5">Key Observation: </h2>
+                <ul class="left-bullet">
+                  <li><a href="#larger-scale-sim-to-real">Scaling law</a>: Increasing the simulation data scale can enhance the success rate until it converges at a high-performance level.</li>
+                  <li><a href="#co-train-and-fine-tune">Mixing Sim-Real</a>: Co-training real-world data can integrate the characteristics of both datasets.</li>
+                </ul>
+              </div>
+              <!-- <div class="hero-body">
+                <img id="teaser" width="100%" src="./static/images/teaser.png"/>
+              </div> -->
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  </div>
+
+  <hr style="width: 70%; height: 1px; border: none; background-color: #282828; margin: 24px auto;">
+
+    <div class="container is-max-desktop" style="z-index: 2">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div style="text-align: center;">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Anonymous Authors</a></a>&nbsp</a>&nbsp</a>&nbsp</a>&nbsp</a>&nbsp
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+</section>
+
+<!-- <hr style="width: 70%; height: 1px; border: none; background-color: #282828; margin: 24px auto;">
+<section class="section" style="padding-bottom: 0">
+  <div class="container">
+    <div id="method_video" class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds no-bottom-padding">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+          <video 
+            poster="./videos/main-demo-n1-cover.jpg" 
+            controls 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid #bbb; border-radius: 10px;"
+          >
+            <source src="./videos/main-demo-n1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<hr style="width: 70%; height: 1px; border: none; background-color: #282828; margin: 24px auto;">
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h1 class="title is-4" style="text-align: left;">	&#10148; Real-to-Sim-to-Real for Diverse Robotic Manipulation Tasks
+        </h1>            
+      </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <img src="./static/images/tasks.png" alt="zero-shot-sim-to-real" width="100%">
+      </div>
+    </div>
+    <div class="columns is-left">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> Four tasks with individual policies are used to validate the effectiveness of RE<sup>3</sup>SIM.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section"  style="margin-top: 0; padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 id="visual-comparison" class="title is-5" style="text-align: left;">Visual Comparison: Low Vision Gap</h2>
+      </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="columns is-half" style="margin: 0px;"> 
+        <div class="column is-full-width">
+          <video poster="" id="ade" autoplay="" muted="" loop="" playsinline="" controls="" height="10%">
+            <source src="./videos/visual-comparison.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div id="example1" class="bal-container-small">
+        
+          <div class="bal-after">
+            <video muted autoplay playsinline loop width="100%">
+              <source src="./videos/sim_vs_real/sim-s-2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="bal-before" style="width:63.53503184713376%;">
+            <div class="bal-before-inset" style="width: 628px;">
+              <video muted autoplay playsinline loop width="100%">
+                <source src="./videos/sim_vs_real/real-s-2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        
+          <div class="bal-handle" style="left:63.53503184713376%;">
+            <span class=" handle-left-arrow"></span>
+            <span class="handle-right-arrow"></span>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <!-- <img src="./static/images/visual-comparison.png" alt="visual-comparison" width="70%"> -->
+      <div class="column is-full-width">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Background Rendering</th>
+              <th>PSNR</th>
+              <th>SSIM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b><a href="http://poly.cam">Polycam</a></b></td>
+              <td>11.52 ± 1.40</td>
+              <td>0.34 ± 0.04</td>
+            </tr>
+            <tr>
+              <td><b><a href="https://github.com/cdcseacave/openMVS">OpenMVS</a></b></td>
+              <td><b>13.40 ± 0.96</b></td>
+              <td>0.27 ± 0.03</td>
+            </tr>
+            <tr>
+              <td><b>3DGS</b></td>
+              <td><b>13.29 ± 1.11</b></td>
+              <td><b>0.37 ± 0.04</b></td>
+            </tr>
+          </tbody>
+        </table>  
+      </div>
+  
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> We manually aligned the objects with those in the simulation, but noticeable pixel-level discrepancies remain. The background alignment also has some pixel-level deviations. These factors collectively lead to the relatively low PSNR and SSIM values of all methods, especially in the texture-rich scene.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <img src="./static/images/compare_web.png" alt="visual-stack" width="100%">
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> 3DGS outperforms Polycam in both RSNR and SSIM. Its PSNR is comparable to OpenMVS, but SSIM is notably higher. OpenMVS's reconstruction has cracks, causing an obvious sim-to-real gap. The qualitative and quantitative results demonstrate that RE<sup>3</sup>SIM is capable of producing high-quality and well-aligned reconstruction results, making zero-shot sim-to-real transfer possible. 
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section"  style="margin-top: 0; padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 id="zero-shot-sim-to-real" class="title is-5" style="text-align: left;">Zero-Shot Sim-to-Real</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+        <b>Note:</b> RE<sup>3</sup>SIM can generate high-quality simulation data for training generalizable robotic policies by zero-shot sim-to-real transfer. Here are the videos of the real-world experiments of tasks <tt>pick and drop a bottle into the basket</tt>, <tt>place a vegetable on the board</tt>, <tt>stack blocks</tt> and <tt>clear objects on the table</tt>. All videos are played at normal speed.
+        </p><br>
+        <!-- pick and drop a bottle into the basket -->
+        <div style="position: relative;">
+          <button class="carousel-button button prev-button" style="position: absolute; left: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play" style="transform: rotate(180deg);"></i>
+            </span>
+          </button>
+  
+          <p> <b> <tt> Pick and drop a bottle into the basket </tt> </b> <p>
+          <div class="carousel-container" style="overflow: hidden;">
+            <div id="video-carousel-1" class="carousel-track video-carousel" style="display: flex; transition: transform 0.5s ease;">
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/pick-1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/pick-2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+  
+          <button class="carousel-button button next-button" style="position: absolute; right: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play"></i>
+            </span>
+          </button>
+        </div>
+
+        <!-- place a vegetable on the board -->
+        <div style="position: relative;">
+          <button class="carousel-button button prev-button" style="position: absolute; left: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play" style="transform: rotate(180deg);"></i>
+            </span>
+          </button>
+  
+          <p> <b> <tt> Place a vegetable on the board </tt> </b> <p>
+          <div class="carousel-container" style="overflow: hidden;">
+            <div id="video-carousel-2" class="carousel-track video-carousel" style="display: flex; transition: transform 0.5s ease;">
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/place-1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/place-5.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/place-3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/place-4.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/place-1.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+  
+          <button class="carousel-button button next-button" style="position: absolute; right: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play"></i>
+            </span>
+          </button>
+        </div>
+
+        <!-- stack blocks -->
+        <div style="position: relative;">
+          <button class="carousel-button button prev-button" style="position: absolute; left: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play" style="transform: rotate(180deg);"></i>
+            </span>
+          </button>
+  
+          <p> <b> <tt> Stack blocks </tt> </b> <p>
+          <div class="carousel-container" style="overflow: hidden;">
+            <div id="video-carousel-3" class="carousel-track video-carousel" style="display: flex; transition: transform 0.5s ease;">
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/stack-1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/stack-3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/stack-2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+  
+          <button class="carousel-button button next-button" style="position: absolute; right: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play"></i>
+            </span>
+          </button>
+        </div>
+
+        <!-- clear objects on the table -->
+        <div style="position: relative;">
+          <button class="carousel-button button prev-button" style="position: absolute; left: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play" style="transform: rotate(180deg);"></i>
+            </span>
+          </button>
+  
+          <p> <b> <tt> Clear objects on the table </tt> </b> <p>
+          <div class="carousel-container" style="overflow: hidden;">
+            <div id="video-carousel-4" class="carousel-track video-carousel" style="display: flex; transition: transform 0.5s ease;">
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/multi-1-1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 50%; padding: 0 5px;">
+                <video poster="" autoplay="" muted="" loop="" playsinline="" controls="" width="100%">
+                  <source src="./videos/multi-2-1.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+  
+          <button class="carousel-button button next-button" style="position: absolute; right: -50px; top: 50%; transform: translateY(-50%); z-index: 10; background: #f5f5f5; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%) scale(1)'">
+            <span class="icon">
+              <i class="fas fa-play"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="video-grid">
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 id="real-to-sim-to-real-efficiency" class="title is-5" style="text-align: left;">Real-to-Sim-to-Real Efficiency</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <p>
+          <b>Note: human effort in reconstruction. </b> The table presents estimated reconstruction times at the table level. Additionally, we show the human effort for reconstructing an object with ARCode.
+        </p>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Input Types</th>
+              <th>Video</th>
+              <th>Images</th>
+              <th>ARCode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Human Efforts (s)</b></td>
+              <td>51.5</td>
+              <td>84.5</td>
+              <td>60.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column is-half">
+        <p>
+          <b>Note: time cost for simulation data collection. </b> Time needed to collect 100 episodes of simulation data for each task, using a machine equipped with 8 RTX 4090 GPUs.
+        </p>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Tasks</th>
+              <th>Time Cost (minutes)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pick and drop a bottle into the basket</td>
+              <td>12.35</td>
+            </tr>
+            <tr>
+              <td>Place a vegetable on the board</td>
+              <td>13.78</td>
+            </tr>
+            <tr>
+              <td>Stack blocks</td>
+              <td>6.45</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section"  style="margin-top: 0; padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 id="larger-scale-sim-to-real" class="title is-5" style="text-align: left;">Large-Scale Sim-to-Real</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+        <b>Note:</b> To push the limit of utilizing synthetic data for real-world manipulation problems, we choose a <tt>clear objects on the table</tt> task and evaluate the generalizability of a policy trained on a large-scale simulation dataset.
+        </p><br>
+
+        <video poster="" id="ade" autoplay="" muted="" loop="" playsinline="" controls="" height="10%">
+          <source src="./videos/generalizability.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <p>
+          <b>Note:</b> Doubling the data size often results in a large improvement in success rate until convergence.
+        </p>
+        <img src="./static/images/scale_results.png" alt="large-scale-sim-to-real" width="100%">
+      </div>  
+      <div class="column is-half">
+        <p>
+          <b>Note:</b> A large dataset enables the policy to exhibit some robustness to variations in objects or lighting.
+        </p>
+        <img src="./static/images/dataset_size_ablation.png" alt="large-scale-sim-to-real" width="100%">
+      </div>  
+    </div>
+  </div>
+</section>
+
+
+<hr style="width: 70%; height: 1px; border: none; background-color: #282828; margin: 24px auto;">
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h1 class="title is-4" style="text-align: left;">&#10148; Comparison over Simulated and Real Data</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> Real-world and simulation data often exhibit variations in both distribution and quality, because of differences in scene initialization methods and trajectory preferences between human operators and the rule-based policy.
+        </p>    
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop"></div>
+</section>
+
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-5" style="text-align: left;">Object Location</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop"> 
+    <div class="columns is-centered">
+      <img src="./static/images/data_distribution.png" alt="data-distribution" width="100%">
+    </div>
+  </div><br>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> Despite efforts to randomize object positions, data distributions differ slightly due to the challenge of achieving true randomness in real-world settings.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-5" style="text-align: left;">Data Quality</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <img src="./static/images/data_quality.png" alt="data-quality" width="100%">
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <ul>
+          <li>• In simulation, the motion planner tends to take the shortest path, resulting in shorter trajectories but with larger angular variations.  
+          </li>
+          <li>• Longer trajectories may include more pauses, which can negatively impact model training due to reduced action continuity. This is more often observed in real-world data.
+          </li>
+        </ul>  
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="width: 70%; height: 1px; border: none; background-color: #282828; margin: 24px auto;">
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h1 class="title is-4" style="text-align: left;" id="co-train-and-fine-tune">&#10148; Co-training and Fine-tuning</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">  
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> Left: Kernel Density Estimate (KDE) of the Euclidean distance traveled by the robotic arm's end effector between adjacent time steps. Right: The number of time steps taken by the robotic arm from the start of movement to the first closure of the gripper. "Sim" and "Real" indicate models trained on simulated and real data, respectively, while "Co-train" and "Fine-tune" refer to models trained on a mix of data and pre-trained with real data, respectively.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <img src="./static/images/delta_distances_distribution.png" alt="joint-train" width="100%">
+      </div>
+      <div class="column is-half">
+        <img src="./static/images/close_gripper_index.png" alt="close-gripper-index" width="100%">
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <p>
+          <b>Note:</b> The distribution of simulation and real data is generally similar. The data generated by our method can be integrated into real data through pretraining or co-training, introducing new features without causing the training process to collapse.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="width: 70%; height: 1px; border: none; background-color: #282828; margin: 24px auto;">
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h1 class="title is-4" style="text-align: left;">&#10148; More Details</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-5" style="text-align: left;">Framework</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-left">
+      <div class="column is-full-width">
+          <p>
+            RE<sup>3</sup>SIM leverages 3D reconstruction and a physics-based simulator, providing small 3D gaps that enable large-scale simulation data generation for learning manipulation skills via sim-to-real transfer.
+            We first reconstruct the background and the objects of the scene separately, and then align them with the robot in the real world. Then high-quality simulation data can be generated in the reconstructed simulator, which can be used to train a policy that can be transferred to the real world.
+          </p>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="image-area">
+          <img src="./static/images/pipeline.png" alt="pipeline" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-5" style="text-align: left;">More Visual Results in Simulation</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-left">
+      <div class="column is-full-width">
+        <p> Rendering results of <tt>place a vegetable on the board</tt> task. </p>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">  
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <img src="./static/images/place.png" alt="visual-place" width="100%">
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">  
+    <div class="columns is-left">
+      <div class="column is-full-width">
+        <p> Rendering results of <tt>stack blocks</tt> task. </p>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">  
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <img src="./static/images/stack.png" alt="visual-stack" width="100%">
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">  
+    <div class="columns is-left">
+      <div class="column is-full-width">
+        <p> Rendering results of <tt>clear objects on the table</tt> task.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">  
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <img src="./static/images/multi-items.png" alt="visual-multi-item" width="100%">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./index.html">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="./index.html" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="content">
+        <p>
+          The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer> 
+
+</body>
+</html>

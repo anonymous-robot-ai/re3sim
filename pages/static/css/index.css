@@ -1,0 +1,528 @@
+body {
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-family: 'verdana', verdana;
+}
+
+@font-face {
+  font-family: "Font Titan";
+  /* font-style: lighter; */
+  /* font-weight: 100; */
+  font-display: block;
+  src: url(../webfonts/titan1.ttf);
+}
+
+
+/* body {
+  font-family: "Font Titan";
+  font-weight: 100;
+} */
+
+.section-with-bg {
+  background-image: linear-gradient(rgba(222, 222, 222, 0.7), rgba(222, 222, 222, 0.7)), url('../images/grid.jpg');
+  background-size: cover; 
+  background-position: center; 
+  /* background-size: cover; */
+  /* padding: 20px; */
+}
+
+ .section-with-bg {
+  position: relative;
+  z-index: 1;
+}
+
+.section-with-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4); 
+  z-index: 1; 
+}
+
+.section-with-bg h1, .section-with-bg p {
+  position: relative;
+  z-index: 2; 
+ }
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  width: 70%; /* 根据实际需要进行调整 */
+  margin: 0 auto; /* 使容器在页面中居中 */
+  overflow: hidden; /* 隐藏溢出的内容 */
+}
+
+.results-carousel .item {
+  width: 90%; /* 或其他所需百分比 */
+  height: auto;
+  margin: 10px auto; /* 调整边距，并居中对齐 */
+  overflow: hidden;
+  border: 0px solid #8b5b5b;
+  border-radius: 10px;
+  padding: 0;
+  text-align: center; /* 文本居中 */
+  margin-top: 10px; /* 在图像和文本之间添加一些空间 */
+  color: #0099ff; /* 设置文本颜色 */
+  font-size: 13px; /* 设置字体大小 */
+}
+
+.results-carousel .slider-pagination {
+  position: absolute; /* Allow absolute positioning */
+  bottom: -4px; /* Adjust this value to move dots lower */
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+.gif-grid-6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 四列布局 */
+  gap: 2px;
+  width: 100%; /* 确保容器宽度充足 */
+  margin-left: auto; /* 左边距自动 */
+  margin-right: auto; /* 右边距自动 */
+  margin-top: -60px; /* 右边距自动 */
+}
+
+
+.gif-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* 四列布局 */
+  gap: 10px;
+  width: 100%; /* 确保容器宽度充足 */
+  margin-left: auto; /* 左边距自动 */
+  margin-right: auto; /* 右边距自动 */
+}
+
+.item {
+  border: 0px solid #ddd; /* 为项目添加边框（可选） */
+}
+
+.image-item img, .gif-item img {
+  width: 100%; /* 让图像填满容器 */
+  height: auto; /* 保持图像的原始宽高比 */
+}
+
+.full-width-text {
+  grid-column: 1 / -1; /* 从第一列开始，延伸到最后一列 */
+  text-align: center; /* 文字居中 */
+  color: #0099ff; /* 设置文本颜色 */
+  font-size: 20px; /* 设置字体大小 */
+  /* 其他样式 */
+}
+
+.full-width-text-black {
+  grid-column: 1 / -1; /* 从第一列开始，延伸到最后一列 */
+  text-align: center; /* 文字居中 */
+  color: #000000; /* 设置文本颜色 */
+  font-size: 20px; /* 设置字体大小 */
+  /* 其他样式 */
+}
+
+.gif-caption {
+  text-align: center;
+  color: #000000;
+  font-size: 18px;
+}
+
+.gif-caption-small {
+  text-align: center;
+  color: #0099ff; /* 设置文本颜色 */
+  font-size: 11px;
+}
+
+.gif-caption-tiny {
+  text-align: center;
+  color: #0099ff; /* 设置文本颜色 */
+  font-size: 8px;
+}
+
+
+.caption {
+  height: 30px;
+  text-align: center;
+}
+
+.gif-caption-intens {
+  text-align: center;
+  color: #c27100; /* 设置文本颜色 */
+  font-size: 15px;
+}
+
+.img-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates two columns */
+  grid-gap: 10px; /* Adjusts the gap between videos */
+  margin: auto; /* Centers the grid */
+  max-width: 800px; /* Adjusts the maximum width of the grid */
+}
+
+.img-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+  grid-gap: 10px; /* Adjusts the gap between videos */
+  margin: auto; /* Centers the grid */
+  max-width: 800px; /* Adjusts the maximum width of the grid */
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+  grid-gap: 5px; /* Adjusts the gap between videos */
+  margin: auto; /* Centers the grid */
+  max-width: 960px; /* Adjusts the maximum width of the grid */
+  /* height: 10% */
+}
+
+.video-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates two columns */
+  grid-gap: 10px; /* Adjusts the gap between videos */
+  margin: auto; /* Centers the grid */
+  max-width: 960px; /* Adjusts the maximum width of the grid */
+  /* height: 10% */
+}
+
+.video-grid video {
+  width: 100%; /* Video takes full width of the grid column */
+  height: 280px; /* Set a fixed height */
+  object-fit: cover; /* Optional: Adjusts video to cover the element's size */
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 50%;  /* 改为50%以显示两个视频 */
+  padding: 0 5px;
+}
+
+.carousel-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  opacity: 0.9;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.carousel-button .icon {
+  color: #333;
+  font-size: 0.9em;
+}
+
+.left-bullet {
+  list-style: disc;
+  padding-left: 1.5em;
+  text-align: left;
+}
+
+
+.bal-container-small {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.bal-container-big {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.bal-after {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bal-before {
+  display: block;
+  position: absolute;
+  top: 0;
+  /* right: 0; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  overflow: hidden;
+}
+
+.bal-before-inset {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bal-after img,
+.bal-before img {
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.bal-beforePosition {
+  background: #121212;
+  color: #fff;
+  left: 0;
+  pointer-events: none;
+  border-radius: 0.2rem;
+  padding: 2px 10px;
+}
+
+.bal-afterPosition {
+  background: #121212;
+  color: #fff;
+  right: 0;
+  pointer-events: none;
+  border-radius: 0.2rem;
+  padding: 2px 10px;
+}
+
+.bal-handle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  z-index: 20; 
+  pointer-events: none; 
+}
+
+.handle-left-arrow,
+.handle-right-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 8px 6px 0;
+  border-color: transparent #333 transparent transparent;
+  transform: translateX(-6px);
+  z-index: 21;
+  pointer-events: none; 
+}
+
+.handle-right-arrow {
+  transform: rotate(180deg) translateX(-6px);
+  z-index: 21;
+  pointer-events: none; 
+}
+
+.styled-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+.styled-table th, .styled-table td {
+  border: 1px solid black;
+  padding: 8px 12px;
+}
+
+.styled-table th {
+  font-weight: bold;
+}
+
+.styled-table td {
+  font-size: 16px;
+}
+
+.styled-table th, .styled-table td {
+  white-space: nowrap;
+}
+
+.styled-table caption {
+  font-style: italic;
+  margin-bottom: 10px;
+}
